@@ -1,4 +1,4 @@
-# This project utilizies the following superstore data:
+#This project utilizies the following superstore data:
 
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
@@ -27,8 +27,9 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-# For this project, I used SQL to query the superstore database to get information about items sold at the store and their prices.
+#For this project, I used SQL to query the superstore database to get information about items sold at the store and their prices.
 
+#Use a SELECT statement to order the items by price.
 SELECT item_name, price
 FROM superstore
 ORDER BY price ASC;
@@ -37,9 +38,11 @@ SELECT item_name, price
 FROM superstore
 ORDER BY price DESC;
 
+#Show a statistic about the item prices.
 SELECT AVG(price)
 FROM superstore;
 
+#Show a statistic about the prices of items in the category of "Kitchen Supplies".
 SELECT *
 FROM superstore
 WHERE category="Kitchen Supplies"
