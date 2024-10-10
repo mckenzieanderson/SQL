@@ -1,4 +1,4 @@
--- This project utilizes the following Fortune 500 dataset:
+-- This project utilizes the following Fortune 500 Database:
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
@@ -58,7 +58,7 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
--- For this project, I used SQL to query the Fortune 500 database to get information about the largest companies in the United States, ranked by total revenue for the fiscal year.
+-- For this project, I used SQL to query the Fortune 500 Database to get information about the largest companies in the United States, ranked by total revenue for the fiscal year.
 
 SELECT *
 FROM fortune_companies;
