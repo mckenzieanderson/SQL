@@ -1,3 +1,5 @@
+Working with a dataset called chinook, which represents a digital media store and includes tables for artists, albums, media tracks, invoices, and customers.
+
 -- Show Customers (their full names, customer ID, and country) who are not in the US.
 SELECT CustomerId, FirstName, LastName, Country
 FROM chinook.customers
@@ -66,3 +68,34 @@ INNER JOIN chinook.albums AS Albums
 ON Tracks.AlbumId = Albums.AlbumId
 LEFT JOIN chinook.artists AS Artists
 ON Albums.ArtistId = Artists.ArtistId;
+
+-- Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+SELECT T.Name AS 'Track Name', A.Title AS 'Album Name', M.Name AS 'Media Type', G.Name AS 'Genre'
+FROM chinook.tracks AS T
+LEFT JOIN chinook.media_types AS M
+ON T.MediaTypeId = M.MediaTypeId
+LEFT JOIN chinook.albums AS A
+ON T.AlbumId = A.AlbumId
+LEFT JOIN chinook.genres AS G
+ON T.GenreId = G.GenreId;
+
+-- Show the total sales made by each sales agent.
+SELECT Emp.FirstName, Emp.LastName, Round(SUM(Inv.Total)) AS 'Total Sales'
+FROM chinook.employees AS Emp
+LEFT JOIN chinook.customers AS Cust
+ON Emp.EmployeeId = Cust.SupportRepId
+LEFT JOIN chinook.invoices AS Inv
+ON Cust.CustomerId = Inv.CustomerId
+WHERE Emp.Title = 'Sales Support Agent'
+GROUP by Emp.LastName;
+
+-- Which sales agent made the most dollars in sales in 2009?
+SELECT Emp.FirstName, Emp.LastName, Round(SUM(Inv.Total)) AS 'Total Sales'
+FROM chinook.employees AS Emp
+LEFT JOIN chinook.customers AS Cust
+ON Emp.EmployeeId = Cust.SupportRepId
+LEFT JOIN chinook.invoices AS Inv
+ON Cust.CustomerId = Inv.CustomerId
+WHERE Emp.Title = 'Sales Support Agent'
+AND Inv.InvoiceDate LIKE '%2009%'
+ORDER BY 'Total Sales' DESC LIMIT 1;
